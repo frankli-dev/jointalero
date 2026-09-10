@@ -67,14 +67,14 @@ export default function Hero() {
     <section className="bg-background-primary">
       <div className="relative flex flex-col overflow-hidden lg:min-h-[680px] lg:justify-center">
         {/* Photo: stacked under the copy on small screens, full-bleed behind it on large ones */}
-        <div className="relative order-last aspect-[4/3] sm:aspect-[16/9] lg:absolute lg:inset-0 lg:order-none lg:aspect-auto">
+        <div className="relative order-last aspect-[4/3] overflow-hidden sm:aspect-[16/9] lg:absolute lg:inset-0 lg:order-none lg:aspect-auto">
           <Image
             src="/hero.jpg"
             alt="Professional smiling at a laptop in front of a glowing world map and city skyline at night"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[72%_center] lg:object-[50%_center] xl:object-[75%_center]"
+            className="object-cover object-[72%_center] lg:object-[50%_center] xl:object-[75%_center] motion-safe:animate-hero-zoom"
           />
           {/* Blend the photo into the page */}
           <div className="absolute inset-0 bg-gradient-to-b from-background-primary via-transparent to-transparent lg:hidden" />
@@ -85,20 +85,29 @@ export default function Hero() {
         {/* Copy */}
         <div className="section-container relative z-10 w-full pt-12 pb-10 md:pt-16 lg:py-24">
           <div className="max-w-xl text-center lg:text-left mx-auto lg:mx-0">
-            <h1 className="mb-6 text-text-primary lg:text-6xl xl:text-7xl">
+            <h1
+              className="mb-6 text-text-primary lg:text-6xl xl:text-7xl motion-safe:animate-fade-up"
+              style={{ animationDelay: '100ms' }}
+            >
               Your Skills.{' '}
-              <span className="bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-300 via-blue-500 to-cyan-300 bg-[length:200%_auto] bg-clip-text text-transparent motion-safe:animate-gradient-x">
                 Global Opportunities.
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl mb-8 text-text-secondary">{homePageCopy.hero.subheadline}</p>
+            <p
+              className="text-lg md:text-xl mb-8 text-text-secondary motion-safe:animate-fade-up"
+              style={{ animationDelay: '250ms' }}
+            >
+              {homePageCopy.hero.subheadline}
+            </p>
 
             <ul className="mb-10 flex flex-wrap justify-center gap-3 lg:justify-start" aria-label="Fields we cover">
-              {fields.map((field) => (
+              {fields.map((field, i) => (
                 <li
                   key={field.label}
-                  className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-text-primary backdrop-blur-md"
+                  className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-text-primary backdrop-blur-md motion-safe:animate-fade-up"
+                  style={{ animationDelay: `${400 + i * 80}ms` }}
                 >
                   <Icon name={field.icon} className={`h-5 w-5 ${field.color}`} />
                   {field.label}
@@ -106,7 +115,10 @@ export default function Hero() {
               ))}
             </ul>
 
-            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+            <div
+              className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 motion-safe:animate-fade-up"
+              style={{ animationDelay: '750ms' }}
+            >
               <Link href="/opportunities" className="btn-primary text-center">
                 {homePageCopy.hero.cta1}
               </Link>
@@ -126,11 +138,17 @@ export default function Hero() {
             className="absolute right-[3%] top-1/2 z-10 hidden w-72 space-y-3 xl:block [transform:translateY(-50%)_perspective(1200px)_rotateY(-10deg)]"
             aria-label="Open roles"
           >
-            {roleCards.map(({ opportunity, icon, tile }) => (
-              <li key={opportunity.id}>
+            {roleCards.map(({ opportunity, icon, tile }, i) => (
+              <li
+                key={opportunity.id}
+                className="motion-safe:animate-slide-in-right"
+                style={{ animationDelay: `${700 + i * 120}ms` }}
+              >
+                {/* Negative delays put each card at a different point in the float cycle */}
                 <Link
                   href={`/opportunities/${opportunity.id}`}
-                  className="group flex items-center gap-3 rounded-2xl border border-sky-300/20 bg-slate-900/60 p-3 shadow-lg shadow-blue-950/50 backdrop-blur-md transition-colors hover:border-sky-300/50 hover:bg-slate-900/75"
+                  className="group flex items-center gap-3 rounded-2xl border border-sky-300/20 bg-slate-900/60 p-3 shadow-lg shadow-blue-950/50 backdrop-blur-md transition-colors hover:border-sky-300/50 hover:bg-slate-900/75 motion-safe:animate-float"
+                  style={{ animationDelay: `-${i * 1.5}s` }}
                 >
                   <span
                     className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${tile} text-white`}
@@ -160,7 +178,10 @@ export default function Hero() {
 
       {/* Trust Metrics */}
       <div className="section-container relative pb-20 md:pb-28">
-        <div className="bg-background-secondary/50 border border-background-tertiary rounded-lg p-8 backdrop-blur-sm text-center">
+        <div
+          className="bg-background-secondary/50 border border-background-tertiary rounded-lg p-8 backdrop-blur-sm text-center motion-safe:animate-fade-up"
+          style={{ animationDelay: '900ms' }}
+        >
           <p className="text-text-tertiary text-sm mb-8">{homePageCopy.trustMessage}</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {metrics.map((metric) => (

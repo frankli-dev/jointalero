@@ -41,6 +41,35 @@ const config: Config = {
         '2xl': '1rem',
         '3xl': '1.5rem',
       },
+      keyframes: {
+        'fade-up': {
+          '0%': { opacity: '0', transform: 'translateY(24px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'slide-in-right': {
+          '0%': { opacity: '0', transform: 'translateX(48px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        'hero-zoom': {
+          '0%': { transform: 'scale(1.08)' },
+          '100%': { transform: 'scale(1)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-6px)' },
+        },
+        'gradient-x': {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+      },
+      animation: {
+        'fade-up': 'fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both',
+        'slide-in-right': 'slide-in-right 0.9s cubic-bezier(0.22, 1, 0.36, 1) both',
+        'hero-zoom': 'hero-zoom 2.4s cubic-bezier(0.22, 1, 0.36, 1) both',
+        float: 'float 6s ease-in-out infinite',
+        'gradient-x': 'gradient-x 6s ease-in-out infinite',
+      },
     },
   },
   plugins: [],
