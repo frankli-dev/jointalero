@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { footerLinks, siteConfig } from '@/data/config'
+import Logo from './Logo'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -11,7 +12,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-5 gap-12 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <div className="text-2xl font-bold gradient-text mb-4">TP</div>
+            <Logo className="mb-4" />
             <p className="text-text-tertiary text-sm">
               Your Skills. Global Opportunities. Connect with technology projects worldwide.
             </p>
@@ -90,7 +91,7 @@ export default function Footer() {
         <div className="border-t border-background-tertiary py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-text-tertiary text-sm">
-              © {currentYear} Talent Platform. All rights reserved.
+              © {currentYear} {siteConfig.name}. All rights reserved.
             </p>
             {siteConfig.social && (
               <div className="flex gap-6">

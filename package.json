@@ -1,7 +1,7 @@
 {
-  "name": "talent-platform",
+  "name": "jointalero",
   "version": "1.0.0",
-  "description": "Your Skills. Global Opportunities. - AI, Data & Technology Talent Platform",
+  "description": "Your Skills. Global Opportunities. - Jointalero: AI, Data & Technology Talent",
   "private": true,
   "scripts": {
     "dev": "ulimit -s 65536 && next dev",

@@ -1,4 +1,4 @@
-# Talent Platform — Your Skills. Global Opportunities.
+# Jointalero — Your Skills. Global Opportunities.
 
 A website for a company that connects professionals with AI, data, software development, and
 non-technical technology work, and helps companies build project teams.

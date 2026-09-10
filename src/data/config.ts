@@ -1,10 +1,10 @@
 import { SiteConfig } from '@/types'
 
 export const siteConfig: SiteConfig = {
-  name: 'Talent Platform',
+  name: 'Jointalero',
   description: 'Your Skills. Global Opportunities. Connect with AI, data, software, and technology projects from around the world.',
   tagline: 'Your Skills. Global Opportunities.',
-  logo: 'TP',
+  logo: 'jointalero',
   metrics: {
     projectsDelivered: '40+',
     opportunities: 'Global',
@@ -12,7 +12,7 @@ export const siteConfig: SiteConfig = {
     workType: 'Flexible',
   },
   contact: {
-    email: 'hello@talentplatform.com',
+    email: 'hello@jointalero.com',
     phone: undefined,
   },
   social: {

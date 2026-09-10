@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { navigationLinks } from '@/data/config'
+import Logo from './Logo'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -13,7 +14,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className="text-2xl font-bold gradient-text">TP</div>
+            <Logo />
           </Link>
 
           {/* Desktop Menu */}

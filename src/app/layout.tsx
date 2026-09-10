@@ -6,9 +6,10 @@ import { siteUrl } from '@/lib/site'
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Talent Platform - Your Skills. Global Opportunities.',
-    template: '%s | Talent Platform',
+    default: `${siteConfig.name} - ${siteConfig.tagline}`,
+    template: `%s | ${siteConfig.name}`,
   },
+  applicationName: siteConfig.name,
   description: siteConfig.description,
   alternates: { canonical: '/' },
   keywords: [
@@ -22,8 +23,9 @@ export const metadata: Metadata = {
     'AI evaluation',
   ],
   openGraph: {
-    title: 'Talent Platform - Your Skills. Global Opportunities.',
+    title: `${siteConfig.name} - ${siteConfig.tagline}`,
     description: siteConfig.description,
+    siteName: siteConfig.name,
     type: 'website',
   },
 }
