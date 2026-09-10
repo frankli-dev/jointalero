@@ -18,12 +18,12 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center lg:space-x-5 xl:space-x-8">
             {navigationLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-text-secondary hover:text-accent-primary transition-colors text-sm font-medium"
+                className="whitespace-nowrap text-text-secondary hover:text-accent-primary transition-colors text-sm font-medium"
               >
                 {link.label}
               </Link>
@@ -34,13 +34,13 @@ export default function Navigation() {
           <div className="hidden lg:flex items-center gap-4">
             <Link
               href="/for-professionals"
-              className="text-text-secondary hover:text-accent-primary transition-colors text-sm font-medium"
+              className="whitespace-nowrap text-text-secondary hover:text-accent-primary transition-colors text-sm font-medium"
             >
               Join Network
             </Link>
             <Link
               href="/for-companies"
-              className="btn-primary text-sm py-2 px-4"
+              className="btn-primary whitespace-nowrap text-sm py-2 px-4"
             >
               Hire Talent
             </Link>
