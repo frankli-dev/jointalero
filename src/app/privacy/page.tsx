@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import LegalPage from '@/components/LegalPage'
+import { siteConfig } from '@/data/config'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
@@ -17,7 +18,7 @@ export default function PrivacyPage() {
         {
           heading: '1. Data controller',
           body: [
-            'The controller of your personal data is [COMPANY LEGAL NAME], [REGISTERED ADDRESS]. You can contact us at [CONTACT EMAIL], or our data protection contact at [DPO / PRIVACY CONTACT].',
+            `The controller of your personal data is [COMPANY LEGAL NAME], [REGISTERED ADDRESS]. You can contact us at ${siteConfig.contact.email}, or our data protection contact at [DPO / PRIVACY CONTACT].`,
           ],
         },
         {
@@ -53,7 +54,7 @@ export default function PrivacyPage() {
           heading: '6. Your rights',
           body: [
             'Depending on your jurisdiction you may have the right to access, correct, delete, or port your data, to object to or restrict processing, and to withdraw consent.',
-            'To exercise any of these rights, contact [CONTACT EMAIL]. You may also lodge a complaint with your local supervisory authority.',
+            `To exercise any of these rights, contact ${siteConfig.contact.email}. You may also lodge a complaint with your local supervisory authority.`,
           ],
         },
         {

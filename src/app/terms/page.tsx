@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import LegalPage from '@/components/LegalPage'
+import { siteConfig } from '@/data/config'
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
@@ -18,7 +19,7 @@ export default function TermsPage() {
           heading: '1. Who we are',
           body: [
             'This website is operated by [COMPANY LEGAL NAME], registered at [REGISTERED ADDRESS] under registration number [REGISTRATION NUMBER] ("we", "us").',
-            'You can contact us at [CONTACT EMAIL].',
+            `You can contact us at ${siteConfig.contact.email}.`,
           ],
         },
         {

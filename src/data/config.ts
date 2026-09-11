@@ -12,7 +12,7 @@ export const siteConfig: SiteConfig = {
     workType: 'Flexible',
   },
   contact: {
-    email: 'hello@jointalero.com',
+    email: 'leo@jointalero.com',
     phone: undefined,
   },
   social: {

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import LegalPage from '@/components/LegalPage'
+import { siteConfig } from '@/data/config'
 
 export const metadata: Metadata = {
   title: 'Cookie Policy',
@@ -44,7 +45,7 @@ export default function CookiesPage() {
         {
           heading: '5. Contact',
           body: [
-            'Questions about this policy can be sent to [CONTACT EMAIL].',
+            `Questions about this policy can be sent to ${siteConfig.contact.email}.`,
           ],
         },
       ]}
