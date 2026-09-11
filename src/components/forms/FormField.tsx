@@ -38,7 +38,7 @@ export default function FormField({
       {children}
 
       {error && (
-        <p id={`${htmlFor}-error`} role="alert" className="text-sm text-red-400 mt-2">
+        <p id={`${htmlFor}-error`} role="alert" className="text-sm text-red-600 dark:text-red-400 mt-2">
           {error}
         </p>
       )}

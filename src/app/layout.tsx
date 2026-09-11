@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { siteConfig } from '@/data/config'
 import { siteUrl } from '@/lib/site'
+import { themeInitScript } from '@/lib/theme'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -36,7 +37,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    // The init script may remove `dark` before hydration, hence suppressHydrationWarning.
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="bg-background-primary text-text-primary">
         <a href="#main-content" className="skip-link">
           Skip to main content

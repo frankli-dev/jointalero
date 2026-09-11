@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { navigationLinks } from '@/data/config'
 import Logo from './Logo'
+import ThemeToggle from './ThemeToggle'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -18,7 +19,7 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center lg:space-x-5 xl:space-x-8">
+          <div className="hidden lg:flex items-center lg:space-x-4 xl:space-x-8">
             {navigationLinks.map((link) => (
               <Link
                 key={link.href}
@@ -31,7 +32,8 @@ export default function Navigation() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center lg:gap-3 xl:gap-4">
+            <ThemeToggle />
             <Link
               href="/for-professionals"
               className="whitespace-nowrap text-text-secondary hover:text-accent-primary transition-colors text-sm font-medium"
@@ -46,18 +48,21 @@ export default function Navigation() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden flex flex-col space-y-1"
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isOpen}
-            aria-controls="mobile-menu"
-          >
-            <div className={`w-6 h-0.5 bg-text-primary transition-all ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></div>
-            <div className={`w-6 h-0.5 bg-text-primary transition-all ${isOpen ? 'opacity-0' : ''}`}></div>
-            <div className={`w-6 h-0.5 bg-text-primary transition-all ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></div>
-          </button>
+          {/* Mobile: theme toggle and menu button */}
+          <div className="lg:hidden flex items-center gap-4">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="flex flex-col space-y-1"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
+            >
+              <div className={`w-6 h-0.5 bg-text-primary transition-all ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></div>
+              <div className={`w-6 h-0.5 bg-text-primary transition-all ${isOpen ? 'opacity-0' : ''}`}></div>
+              <div className={`w-6 h-0.5 bg-text-primary transition-all ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></div>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}

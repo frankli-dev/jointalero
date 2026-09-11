@@ -32,7 +32,7 @@ export default function LegalPage({
         <div className="section-container">
           <div className="max-w-3xl mx-auto">
             <div className="bg-amber-500/10 border border-amber-500/40 rounded-lg p-6 mb-12">
-              <p className="text-amber-200/90 text-sm">
+              <p className="text-amber-900 dark:text-amber-200/90 text-sm">
                 <strong className="font-semibold">Template notice.</strong> This page is a structural
                 placeholder. It is not legal advice and does not yet reflect your company&apos;s
                 actual practices. Replace every bracketed placeholder and have the final text

@@ -241,7 +241,7 @@ export default function ApplicationForm({
       {status === 'error' && (
         <div
           role="alert"
-          className="bg-red-500/10 border border-red-500/40 rounded-lg p-4 text-sm text-red-300"
+          className="bg-red-500/10 border border-red-500/40 rounded-lg p-4 text-sm text-red-700 dark:text-red-300"
         >
           We could not submit your application. Please try again, or email us directly if the problem
           continues.

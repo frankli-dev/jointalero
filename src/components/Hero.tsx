@@ -43,10 +43,10 @@ function Icon({ name, className }: { name: IconName; className?: string }) {
 }
 
 const fields: { label: string; icon: IconName; color: string }[] = [
-  { label: 'AI', icon: 'ai', color: 'text-cyan-300' },
-  { label: 'Data', icon: 'data', color: 'text-emerald-300' },
-  { label: 'Software', icon: 'software', color: 'text-violet-300' },
-  { label: 'Technology', icon: 'cloud', color: 'text-sky-300' },
+  { label: 'AI', icon: 'ai', color: 'text-cyan-600 dark:text-cyan-300' },
+  { label: 'Data', icon: 'data', color: 'text-emerald-600 dark:text-emerald-300' },
+  { label: 'Software', icon: 'software', color: 'text-violet-600 dark:text-violet-300' },
+  { label: 'Technology', icon: 'cloud', color: 'text-sky-600 dark:text-sky-300' },
 ]
 
 // Live roles shown floating over the photo; ids refer to src/data/opportunities.ts.
@@ -62,19 +62,33 @@ const roleCards = featuredRoles.flatMap((role) => {
   return opportunity ? [{ ...role, opportunity }] : []
 })
 
+// The source photos are 1983px wide, so there is no point requesting larger variants.
+const photoSizes = '(max-width: 1983px) 100vw, 1983px'
+const photoClasses =
+  'object-cover object-[72%_center] lg:object-[50%_center] xl:object-[75%_center] motion-safe:animate-hero-zoom'
+
 export default function Hero() {
   return (
     <section className="bg-background-primary">
       <div className="relative flex flex-col overflow-hidden lg:min-h-[680px] lg:justify-center">
-        {/* Photo: stacked under the copy on small screens, full-bleed behind it on large ones */}
+        {/* Photo: stacked under the copy on small screens, full-bleed behind it on large ones.
+            A night shot for the dark theme and a daytime shot for the light theme. */}
         <div className="relative order-last aspect-[4/3] overflow-hidden sm:aspect-[16/9] lg:absolute lg:inset-0 lg:order-none lg:aspect-auto">
           <Image
             src="/hero.jpg"
             alt="Professional smiling at a laptop in front of a glowing world map and city skyline at night"
             fill
             priority
-            sizes="100vw"
-            className="object-cover object-[72%_center] lg:object-[50%_center] xl:object-[75%_center] motion-safe:animate-hero-zoom"
+            sizes={photoSizes}
+            className={`hidden dark:block ${photoClasses}`}
+          />
+          <Image
+            src="/hero-light.jpg"
+            alt="Professional smiling at a laptop in front of a world map and a waterfront city skyline on a sunny day"
+            fill
+            priority
+            sizes={photoSizes}
+            className={`dark:hidden ${photoClasses}`}
           />
           {/* Blend the photo into the page */}
           <div className="absolute inset-0 bg-gradient-to-b from-background-primary via-transparent to-transparent lg:hidden" />
@@ -90,7 +104,7 @@ export default function Hero() {
               style={{ animationDelay: '100ms' }}
             >
               Your Skills.{' '}
-              <span className="bg-gradient-to-r from-cyan-300 via-blue-500 to-cyan-300 bg-[length:200%_auto] bg-clip-text text-transparent motion-safe:animate-gradient-x">
+              <span className="bg-gradient-to-r from-cyan-600 via-blue-700 to-cyan-600 dark:from-cyan-300 dark:via-blue-500 dark:to-cyan-300 bg-[length:200%_auto] bg-clip-text text-transparent motion-safe:animate-gradient-x">
                 Global Opportunities.
               </span>
             </h1>
@@ -106,7 +120,7 @@ export default function Hero() {
               {fields.map((field, i) => (
                 <li
                   key={field.label}
-                  className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-text-primary backdrop-blur-md motion-safe:animate-fade-up"
+                  className="flex items-center gap-2.5 rounded-xl border border-background-tertiary bg-background-primary/70 dark:border-white/10 dark:bg-white/5 px-4 py-2.5 text-sm font-medium text-text-primary backdrop-blur-md motion-safe:animate-fade-up"
                   style={{ animationDelay: `${400 + i * 80}ms` }}
                 >
                   <Icon name={field.icon} className={`h-5 w-5 ${field.color}`} />
@@ -147,7 +161,7 @@ export default function Hero() {
                 {/* Negative delays put each card at a different point in the float cycle */}
                 <Link
                   href={`/opportunities/${opportunity.id}`}
-                  className="group flex items-center gap-3 rounded-2xl border border-sky-300/20 bg-slate-900/60 p-3 shadow-lg shadow-blue-950/50 backdrop-blur-md transition-colors hover:border-sky-300/50 hover:bg-slate-900/75 motion-safe:animate-float"
+                  className="group flex items-center gap-3 rounded-2xl border border-white/70 bg-white/80 p-3 shadow-lg shadow-slate-900/10 backdrop-blur-md transition-colors hover:border-sky-400 hover:bg-white/95 dark:border-sky-300/20 dark:bg-slate-900/60 dark:shadow-blue-950/50 dark:hover:border-sky-300/50 dark:hover:bg-slate-900/75 motion-safe:animate-float"
                   style={{ animationDelay: `-${i * 1.5}s` }}
                 >
                   <span
@@ -164,7 +178,7 @@ export default function Hero() {
                     </span>
                   </span>
                   <span
-                    className="text-text-tertiary transition-transform group-hover:translate-x-0.5 group-hover:text-sky-300"
+                    className="text-text-tertiary transition-transform group-hover:translate-x-0.5 group-hover:text-sky-600 dark:group-hover:text-sky-300"
                     aria-hidden="true"
                   >
                     →

@@ -1,33 +1,38 @@
 import type { Config } from 'tailwindcss'
 
+// Theme colours are CSS variables holding RGB channels (see globals.css), so they switch with the
+// `dark` class on <html> and still support opacity modifiers such as bg-background-primary/90.
+const themeColor = (name: string) => `rgb(var(--color-${name}) / <alpha-value>)`
+
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         background: {
-          primary: '#0f172a',
-          secondary: '#1a2332',
-          tertiary: '#2d3748',
+          primary: themeColor('background-primary'),
+          secondary: themeColor('background-secondary'),
+          tertiary: themeColor('background-tertiary'),
         },
         text: {
-          primary: '#f8fafc',
-          secondary: '#cbd5e1',
-          tertiary: '#94a3b8',
+          primary: themeColor('text-primary'),
+          secondary: themeColor('text-secondary'),
+          tertiary: themeColor('text-tertiary'),
         },
         accent: {
-          primary: '#10b981',
-          dark: '#059669',
-          light: '#6ee7b7',
+          primary: themeColor('accent-primary'),
+          dark: themeColor('accent-dark'),
+          light: themeColor('accent-light'),
         },
         category: {
-          ai: '#06b6d4',
-          software: '#8b5cf6',
-          'non-tech': '#f59e0b',
+          ai: themeColor('category-ai'),
+          software: themeColor('category-software'),
+          'non-tech': themeColor('category-non-tech'),
         },
       },
       fontFamily: {

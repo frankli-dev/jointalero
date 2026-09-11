@@ -8,10 +8,10 @@ interface OpportunityCardProps {
 
 export default function OpportunityCard({ opportunity }: OpportunityCardProps) {
   const categoryColors = {
-    'ai-data': 'bg-blue-600/10 text-blue-400 border-blue-600/30',
-    software: 'bg-purple-600/10 text-purple-400 border-purple-600/30',
-    'non-tech': 'bg-amber-600/10 text-amber-400 border-amber-600/30',
-    qa: 'bg-green-600/10 text-green-400 border-green-600/30',
+    'ai-data': 'bg-blue-600/10 text-blue-700 dark:text-blue-400 border-blue-600/30',
+    software: 'bg-purple-600/10 text-purple-700 dark:text-purple-400 border-purple-600/30',
+    'non-tech': 'bg-amber-600/10 text-amber-700 dark:text-amber-400 border-amber-600/30',
+    qa: 'bg-green-600/10 text-green-700 dark:text-green-400 border-green-600/30',
   }
 
   const colors = categoryColors[opportunity.category]

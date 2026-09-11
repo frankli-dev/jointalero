@@ -9,7 +9,7 @@ export default function AudienceCards() {
       cta: homePageCopy.audiences.technical.cta,
       href: '/for-professionals#technical',
       color: 'from-blue-600/20 to-blue-400/10',
-      accent: 'text-blue-400',
+      accent: 'text-blue-600 dark:text-blue-400',
     },
     {
       title: homePageCopy.audiences.nonTechnical.title,
@@ -17,7 +17,7 @@ export default function AudienceCards() {
       cta: homePageCopy.audiences.nonTechnical.cta,
       href: '/for-professionals#non-technical',
       color: 'from-amber-600/20 to-amber-400/10',
-      accent: 'text-amber-400',
+      accent: 'text-amber-700 dark:text-amber-400',
     },
     {
       title: homePageCopy.audiences.companies.title,
@@ -25,7 +25,7 @@ export default function AudienceCards() {
       cta: homePageCopy.audiences.companies.cta,
       href: '/for-companies',
       color: 'from-purple-600/20 to-purple-400/10',
-      accent: 'text-purple-400',
+      accent: 'text-purple-600 dark:text-purple-400',
     },
   ]
 

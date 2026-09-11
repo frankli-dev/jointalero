@@ -2,6 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Theme palettes as RGB channels, consumed by the Tailwind colours in tailwind.config.ts.
+   Dark is the default (the `dark` class is rendered on <html>); the navbar toggle removes it. */
+:root {
+  color-scheme: light;
+  --color-background-primary: 255 255 255;
+  --color-background-secondary: 241 245 249;
+  --color-background-tertiary: 226 232 240;
+  --color-text-primary: 15 23 42;
+  --color-text-secondary: 51 65 85;
+  --color-text-tertiary: 82 97 122;
+  --color-accent-primary: 4 120 87;
+  --color-accent-dark: 6 95 70;
+  --color-accent-light: 5 150 105;
+  --color-category-ai: 8 145 178;
+  --color-category-software: 124 58 237;
+  --color-category-non-tech: 180 83 9;
+}
+
+.dark {
+  color-scheme: dark;
+  --color-background-primary: 15 23 42;
+  --color-background-secondary: 26 35 50;
+  --color-background-tertiary: 45 55 72;
+  --color-text-primary: 248 250 252;
+  --color-text-secondary: 203 213 225;
+  --color-text-tertiary: 148 163 184;
+  --color-accent-primary: 16 185 129;
+  --color-accent-dark: 5 150 105;
+  --color-accent-light: 110 231 183;
+  --color-category-ai: 6 182 212;
+  --color-category-software: 139 92 246;
+  --color-category-non-tech: 245 158 11;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,8 +48,8 @@ html {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background-color: #0f172a;
-  color: #f8fafc;
+  background-color: rgb(var(--color-background-primary));
+  color: rgb(var(--color-text-primary));
   line-height: 1.6;
 }
 
@@ -86,21 +120,21 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a2332;
+  background: rgb(var(--color-background-secondary));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #10b981;
+  background: rgb(var(--color-accent-primary));
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #059669;
+  background: rgb(var(--color-accent-dark));
 }
 
 /* Visible keyboard focus on every interactive element */
 :focus-visible {
-  outline: 2px solid #10b981;
+  outline: 2px solid rgb(var(--color-accent-primary));
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -117,8 +151,8 @@ body {
   left: 1rem;
   top: 1rem;
   padding: 0.75rem 1.25rem;
-  background: #10b981;
-  color: #0f172a;
+  background: rgb(var(--color-accent-primary));
+  color: rgb(var(--color-background-primary));
   font-weight: 600;
   border-radius: 0.5rem;
 }
