@@ -45,7 +45,12 @@ export default function OpportunitiesPage({ searchParams }: PageProps) {
       {/* Opportunities */}
       <section className="section-padding bg-background-primary">
         <div className="section-container">
-          <OpportunityGrid opportunities={opportunities} initialCategory={initialCategory} />
+          {/* Keyed so following a ?category= link while already on this page resets the filters */}
+          <OpportunityGrid
+            key={initialCategory}
+            opportunities={opportunities}
+            initialCategory={initialCategory}
+          />
         </div>
       </section>
 

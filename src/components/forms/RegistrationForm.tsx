@@ -55,7 +55,8 @@ const categoryOptions = [
   { value: 'qa', label: 'QA & Testing' },
 ]
 
-const allSkills = Object.values(skillsByCategory).flat()
+// Some skills belong to more than one category; list each only once.
+const allSkills = Array.from(new Set(Object.values(skillsByCategory).flat()))
 
 function validate(values: FormState): Errors {
   const errors: Errors = {}

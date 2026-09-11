@@ -1,10 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { FaqItem } from '@/data/faq'
 
 export default function Accordion({ items }: { items: FaqItem[] }) {
   const [open, setOpen] = useState<number | null>(null)
+  // Several accordions render on one page, so panel ids need a per-instance prefix.
+  const idPrefix = useId()
 
   return (
     <div className="space-y-3">
@@ -20,7 +22,7 @@ export default function Accordion({ items }: { items: FaqItem[] }) {
                 type="button"
                 onClick={() => setOpen(isOpen ? null : index)}
                 aria-expanded={isOpen}
-                aria-controls={`faq-panel-${index}`}
+                aria-controls={`${idPrefix}-panel-${index}`}
                 className="w-full flex items-center justify-between gap-4 text-left px-6 py-5 hover:bg-background-tertiary/40 transition-colors"
               >
                 <span className="font-semibold text-base text-text-primary">{item.question}</span>
@@ -38,7 +40,7 @@ export default function Accordion({ items }: { items: FaqItem[] }) {
                 </svg>
               </button>
             </h3>
-            <div id={`faq-panel-${index}`} hidden={!isOpen} className="px-6 pb-5">
+            <div id={`${idPrefix}-panel-${index}`} hidden={!isOpen} className="px-6 pb-5">
               <p className="text-text-secondary text-base">{item.answer}</p>
             </div>
           </div>

@@ -77,12 +77,14 @@ export default function Navigation() {
               <Link
                 href="/for-professionals"
                 className="block btn-secondary w-full text-center"
+                onClick={() => setIsOpen(false)}
               >
                 Join Network
               </Link>
               <Link
                 href="/for-companies"
                 className="block btn-primary text-center"
+                onClick={() => setIsOpen(false)}
               >
                 Hire Talent
               </Link>

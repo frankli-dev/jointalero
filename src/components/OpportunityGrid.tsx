@@ -55,9 +55,15 @@ export default function OpportunityGrid({
       <div className="space-y-6">
         {/* Search */}
         <div>
-          <label className="block text-text-secondary text-sm font-semibold mb-3">Search</label>
+          <label
+            htmlFor="opportunity-search"
+            className="block text-text-secondary text-sm font-semibold mb-3"
+          >
+            Search
+          </label>
           <input
-            type="text"
+            id="opportunity-search"
+            type="search"
             placeholder="Search by title, skill, or keyword..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -67,13 +73,19 @@ export default function OpportunityGrid({
 
         {/* Category Filter */}
         <div>
-          <label className="block text-text-secondary text-sm font-semibold mb-3">
+          <p id="category-filter-label" className="block text-text-secondary text-sm font-semibold mb-3">
             Category
-          </label>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
+          </p>
+          <div
+            role="group"
+            aria-labelledby="category-filter-label"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2"
+          >
             {categories.map((cat) => (
               <button
                 key={cat.id}
+                type="button"
+                aria-pressed={selectedCategory === cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
                   selectedCategory === cat.id
@@ -89,13 +101,19 @@ export default function OpportunityGrid({
 
         {/* Experience Filter */}
         <div>
-          <label className="block text-text-secondary text-sm font-semibold mb-3">
+          <p id="experience-filter-label" className="block text-text-secondary text-sm font-semibold mb-3">
             Experience Level
-          </label>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2">
+          </p>
+          <div
+            role="group"
+            aria-labelledby="experience-filter-label"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2"
+          >
             {experiences.map((exp) => (
               <button
                 key={exp.id}
+                type="button"
+                aria-pressed={selectedExperience === exp.id}
                 onClick={() => setSelectedExperience(exp.id)}
                 className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
                   selectedExperience === exp.id
@@ -130,6 +148,7 @@ export default function OpportunityGrid({
           <div className="text-center py-12">
             <p className="text-text-tertiary mb-4">No opportunities match your criteria.</p>
             <button
+              type="button"
               onClick={() => {
                 setSearchTerm('')
                 setSelectedCategory('all')
