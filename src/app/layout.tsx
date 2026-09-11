@@ -37,8 +37,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    // The init script may remove `dark` before hydration, hence suppressHydrationWarning.
-    <html lang="en" className="dark" suppressHydrationWarning>
+    // The init script may add `dark` before hydration, hence suppressHydrationWarning.
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>

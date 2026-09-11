@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* Theme palettes as RGB channels, consumed by the Tailwind colours in tailwind.config.ts.
-   Dark is the default (the `dark` class is rendered on <html>); the navbar toggle removes it. */
+   Light is the default; the navbar toggle adds the `dark` class to <html> for the dark theme. */
 :root {
   color-scheme: light;
   --color-background-primary: 255 255 255;

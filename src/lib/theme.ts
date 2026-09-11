@@ -2,12 +2,12 @@ export type Theme = 'light' | 'dark'
 
 export const THEME_STORAGE_KEY = 'theme'
 
-// The server always renders the dark theme. This runs in <head> before first paint and switches to
-// the visitor's saved choice, so returning light-theme visitors never see a dark flash.
+// The server always renders the light theme. This runs in <head> before first paint and switches to
+// the visitor's saved choice, so returning dark-theme visitors never see a light flash.
 export const themeInitScript = `(function () {
   try {
-    if (localStorage.getItem('${THEME_STORAGE_KEY}') === 'light') {
-      document.documentElement.classList.remove('dark')
+    if (localStorage.getItem('${THEME_STORAGE_KEY}') === 'dark') {
+      document.documentElement.classList.add('dark')
     }
   } catch (e) {}
 })()`
