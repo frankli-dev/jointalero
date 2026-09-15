@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import LegalPage from '@/components/LegalPage'
+import LegalPage, { LegalList as List } from '@/components/LegalPage'
 import { siteConfig } from '@/data/config'
 
 export const metadata: Metadata = {
@@ -9,16 +9,6 @@ export const metadata: Metadata = {
 }
 
 const company = siteConfig.name
-
-function List({ items }: { items: string[] }) {
-  return (
-    <ul>
-      {items.map((item) => (
-        <li key={item}>{item}</li>
-      ))}
-    </ul>
-  )
-}
 
 export default function PrivacyPage() {
   return (
