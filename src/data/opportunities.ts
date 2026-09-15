@@ -18,7 +18,7 @@ export const opportunities: Opportunity[] = [
       period: 'project',
     },
     duration: '4-6 weeks',
-    deadline: '2024-10-30',
+    deadline: '2026-10-30',
     overview:
       'We need experienced evaluators to assess AI model responses for quality, accuracy, and helpfulness. This is a remote project-based opportunity.',
     responsibilities: [
@@ -56,7 +56,7 @@ export const opportunities: Opportunity[] = [
       period: 'project',
     },
     duration: '6-8 weeks',
-    deadline: '2024-11-15',
+    deadline: '2026-11-15',
     overview:
       'Join our data quality team to review, validate, and improve datasets used in machine learning projects.',
     responsibilities: [
@@ -91,7 +91,7 @@ export const opportunities: Opportunity[] = [
       period: 'hour',
     },
     duration: 'Ongoing',
-    deadline: '2024-12-31',
+    deadline: '2026-12-31',
     overview:
       'Help improve AI language models by evaluating the quality and correctness of English text samples.',
     responsibilities: [
@@ -126,7 +126,7 @@ export const opportunities: Opportunity[] = [
       period: 'project',
     },
     duration: '3 months',
-    deadline: '2024-10-15',
+    deadline: '2026-10-15',
     overview:
       'We\'re looking for an experienced full-stack developer to build a scalable web application for our platform.',
     responsibilities: [
@@ -164,7 +164,7 @@ export const opportunities: Opportunity[] = [
       period: 'project',
     },
     duration: '6-8 weeks',
-    deadline: '2024-11-01',
+    deadline: '2026-11-01',
     overview:
       'Build efficient data processing pipelines to prepare datasets for machine learning models.',
     responsibilities: [
@@ -199,7 +199,7 @@ export const opportunities: Opportunity[] = [
       period: 'hour',
     },
     duration: 'Ongoing',
-    deadline: '2024-12-31',
+    deadline: '2026-12-31',
     overview:
       'Help evaluate and improve content quality for AI training. No technical skills required.',
     responsibilities: [
@@ -234,7 +234,7 @@ export const opportunities: Opportunity[] = [
       period: 'project',
     },
     duration: '3 months',
-    deadline: '2024-10-20',
+    deadline: '2026-10-20',
     overview:
       'Build comprehensive automated test suites to ensure product quality across our platform.',
     responsibilities: [
@@ -270,7 +270,7 @@ export const opportunities: Opportunity[] = [
       period: 'hour',
     },
     duration: 'Ongoing',
-    deadline: '2024-12-31',
+    deadline: '2026-12-31',
     overview:
       'Help train AI models by labeling and annotating image, text, or audio data. No prior experience required.',
     responsibilities: [
@@ -307,7 +307,7 @@ export const opportunities: Opportunity[] = [
       period: 'project',
     },
     duration: '5-7 weeks',
-    deadline: '2024-11-10',
+    deadline: '2026-11-10',
     overview:
       'Conduct in-depth research on specific topics to support AI model training and development.',
     responsibilities: [
@@ -342,7 +342,7 @@ export const opportunities: Opportunity[] = [
       period: 'project',
     },
     duration: '3 months',
-    deadline: '2024-10-25',
+    deadline: '2026-10-25',
     overview:
       'Help build and maintain scalable cloud infrastructure for our growing platform.',
     responsibilities: [
