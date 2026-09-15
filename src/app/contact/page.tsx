@@ -92,11 +92,9 @@ export default function ContactPage() {
 
               <div className="sm:col-span-2">
                 <dt className="text-xs text-text-tertiary mb-2">Company information</dt>
-                <dd className="text-text-secondary text-sm">
-                  [COMPANY LEGAL NAME] · [REGISTERED ADDRESS] · [REGISTRATION NUMBER]
-                  <span className="block text-text-tertiary mt-2">
-                    Replace these placeholders with your registered company details before launch.
-                  </span>
+                <dd className="text-text-secondary">
+                  <span className="block font-medium text-text-primary">{siteConfig.name}</span>
+                  <address className="not-italic">{siteConfig.contact.address}</address>
                 </dd>
               </div>
             </dl>

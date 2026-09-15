@@ -14,11 +14,12 @@ export default function TermsPage() {
       title="Terms of Service"
       description="The terms governing your use of this website and participation in the talent network."
       lastUpdated="[DATE]"
+      isTemplate
       sections={[
         {
           heading: '1. Who we are',
           body: [
-            'This website is operated by [COMPANY LEGAL NAME], registered at [REGISTERED ADDRESS] under registration number [REGISTRATION NUMBER] ("we", "us").',
+            `This website is operated by ${siteConfig.name}, ${siteConfig.contact.address} ("we", "us").`,
             `You can contact us at ${siteConfig.contact.email}.`,
           ],
         },

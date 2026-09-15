@@ -14,6 +14,7 @@ export default function CookiesPage() {
       title="Cookie Policy"
       description="How this website uses cookies and similar technologies, and how you can control them."
       lastUpdated="[DATE]"
+      isTemplate
       sections={[
         {
           heading: '1. What cookies are',

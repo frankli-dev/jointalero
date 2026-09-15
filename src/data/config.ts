@@ -14,6 +14,7 @@ export const siteConfig: SiteConfig = {
   contact: {
     email: 'leo@jointalero.com',
     phone: undefined,
+    address: '100 Riverdale Ave, Yonkers, NY 10701, USA',
   },
   social: {
     linkedin: undefined,

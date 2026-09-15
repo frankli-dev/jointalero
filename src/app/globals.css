@@ -102,6 +102,31 @@ body {
     @apply bg-background-secondary border border-background-tertiary rounded-lg p-6 hover:border-accent-primary transition-colors duration-200;
   }
 
+  /* Long-form legal text passed to LegalPage as children */
+  .legal-prose h2 {
+    @apply text-xl md:text-2xl mt-12 mb-4 first:mt-0;
+  }
+
+  .legal-prose h3 {
+    @apply text-lg md:text-xl font-semibold mt-8 mb-3;
+  }
+
+  .legal-prose p {
+    @apply text-text-secondary mb-4;
+  }
+
+  .legal-prose ul {
+    @apply list-disc pl-6 mb-4 space-y-1.5 text-base md:text-lg text-text-secondary marker:text-accent-primary;
+  }
+
+  .legal-prose strong {
+    @apply font-semibold text-text-primary;
+  }
+
+  .legal-prose a {
+    @apply text-accent-primary underline underline-offset-2 hover:text-accent-dark;
+  }
+
   .gradient-text {
     @apply bg-gradient-to-r from-accent-light to-accent-primary bg-clip-text text-transparent;
   }

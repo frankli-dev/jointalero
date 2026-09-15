@@ -81,6 +81,7 @@ export interface SiteConfig {
   contact: {
     email: string
     phone?: string
+    address: string
   }
   social?: {
     twitter?: string
