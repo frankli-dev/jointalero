@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { sendFormEmail } from '@/lib/email'
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const MAX_TEXT_LENGTH = 2000
@@ -61,6 +62,32 @@ export async function POST(request: Request) {
 
   if (Object.keys(errors).length > 0) {
     return NextResponse.json({ errors }, { status: 422 })
+  }
+
+  try {
+    await sendFormEmail({
+      subject: `New professional profile: ${body.name}`,
+      replyTo: typeof body.email === 'string' ? body.email : undefined,
+      fields: [
+        { label: 'Name', value: body.name },
+        { label: 'Email', value: body.email },
+        { label: 'Country or region', value: body.location },
+        { label: 'Languages', value: body.languages },
+        { label: 'Skills', value: body.skills },
+        { label: 'Experience level', value: body.experience },
+        { label: 'Availability', value: body.availability },
+        { label: 'Preferred project categories', value: body.categories },
+        { label: 'Professional background', value: body.background },
+        { label: 'Portfolio or website', value: body.portfolio },
+        { label: 'LinkedIn profile', value: body.linkedin },
+      ],
+    })
+  } catch (error) {
+    console.error('Failed to email professional profile submission', error)
+    return NextResponse.json(
+      { error: 'We could not send your submission. Please try again shortly.' },
+      { status: 502 }
+    )
   }
 
   return NextResponse.json({ received: true }, { status: 200 })

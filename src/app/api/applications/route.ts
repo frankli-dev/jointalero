@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { sendFormEmail } from '@/lib/email'
 import { opportunities } from '@/data/opportunities'
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -24,7 +25,11 @@ export async function POST(request: Request) {
   const body = payload as Record<string, unknown>
   const errors: Record<string, string> = {}
 
-  if (!isNonEmptyString(body.opportunityId) || !opportunities.some((o) => o.id === body.opportunityId)) {
+  const opportunity = isNonEmptyString(body.opportunityId)
+    ? opportunities.find((o) => o.id === body.opportunityId)
+    : undefined
+
+  if (!opportunity) {
     errors.opportunityId = 'A valid opportunity is required.'
   }
 
@@ -52,6 +57,28 @@ export async function POST(request: Request) {
 
   if (Object.keys(errors).length > 0) {
     return NextResponse.json({ errors }, { status: 422 })
+  }
+
+  try {
+    await sendFormEmail({
+      subject: `New application: ${opportunity?.title ?? body.opportunityId} — ${body.name}`,
+      replyTo: typeof body.email === 'string' ? body.email : undefined,
+      fields: [
+        { label: 'Opportunity', value: opportunity ? `${opportunity.title} (${opportunity.id})` : body.opportunityId },
+        { label: 'Name', value: body.name },
+        { label: 'Email', value: body.email },
+        { label: 'Country or region', value: body.location },
+        { label: 'Availability', value: body.availability },
+        { label: 'Relevant experience', value: body.relevantExperience },
+        { label: 'Portfolio or LinkedIn', value: body.portfolio },
+      ],
+    })
+  } catch (error) {
+    console.error('Failed to email application submission', error)
+    return NextResponse.json(
+      { error: 'We could not send your submission. Please try again shortly.' },
+      { status: 502 }
+    )
   }
 
   return NextResponse.json({ received: true }, { status: 200 })

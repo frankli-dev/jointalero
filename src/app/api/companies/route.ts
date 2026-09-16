@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { sendFormEmail } from '@/lib/email'
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const MAX_MESSAGE_LENGTH = 5000
@@ -51,6 +52,30 @@ export async function POST(request: Request) {
 
   if (Object.keys(errors).length > 0) {
     return NextResponse.json({ errors }, { status: 422 })
+  }
+
+  try {
+    await sendFormEmail({
+      subject: `New company enquiry: ${body.company}`,
+      replyTo: typeof body.email === 'string' ? body.email : undefined,
+      fields: [
+        { label: 'Company', value: body.company },
+        { label: 'Contact name', value: body.name },
+        { label: 'Email', value: body.email },
+        { label: 'Project type', value: body.projectType },
+        { label: 'Team size', value: body.teamSize },
+        { label: 'Required skills', value: body.requiredSkills },
+        { label: 'Timeline', value: body.timeline },
+        { label: 'Budget', value: body.budget },
+        { label: 'Project description', value: body.message },
+      ],
+    })
+  } catch (error) {
+    console.error('Failed to email company enquiry submission', error)
+    return NextResponse.json(
+      { error: 'We could not send your submission. Please try again shortly.' },
+      { status: 502 }
+    )
   }
 
   return NextResponse.json({ received: true }, { status: 200 })

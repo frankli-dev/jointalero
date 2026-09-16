@@ -17,9 +17,30 @@ npx tsc --noEmit # type check
 
 ### Environment
 
+Copy `.env.example` to `.env.local` and fill in the values.
+
 | Variable | Purpose |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Production origin. Used for canonical URLs, Open Graph tags, and `sitemap.xml`. Defaults to `http://localhost:3000`. |
+| `RESEND_API_KEY` | Resend API key. Required in production — form submissions fail without it. |
+| `EMAIL_FROM` | Sender address on a domain verified in Resend, e.g. `Jointalero <website@jointalero.com>`. |
+
+### Email delivery
+
+Every form submission (professional profile, company enquiry, opportunity application) is emailed to
+`siteConfig.contact.email` through the [Resend](https://resend.com) HTTPS API — see `src/lib/email.ts`.
+The submitter's address is set as `reply_to`, so replying from the inbox goes back to them.
+
+To set it up:
+
+1. Create a Resend account and verify `jointalero.com` as a sending domain.
+2. Create an API key.
+3. Set `RESEND_API_KEY` and `EMAIL_FROM` in the host's environment (on Vercel: Project → Settings →
+   Environment Variables). Never commit them — `.env*` files are git-ignored.
+
+Without `RESEND_API_KEY`, `npm run dev` prints each submission to the server console instead of
+sending it, so forms can be exercised locally. In production a missing key makes the request fail
+with a visible error rather than silently dropping the submission.
 
 ## Project structure
 
@@ -31,7 +52,7 @@ src/
   components/
     forms/                registration, application, and company forms
   data/                   editable site content — see below
-  lib/                    formatting helpers, site URL
+  lib/                    formatting helpers, site URL, email sending
   types/                  shared TypeScript types
 ```
 
@@ -57,14 +78,14 @@ shape comes back.
 
 ## Things to complete before launch
 
-1. **Legal pages** — `/terms`, `/privacy`, and `/cookies` are structural templates. Every bracketed
-   placeholder (`[COMPANY LEGAL NAME]`, `[JURISDICTION]`, `[DATE]`, …) must be filled in and the
-   text reviewed by a lawyer. Each page renders a visible template notice until then.
-2. **Company details** — `/contact` shows placeholder registration details.
-3. **Form submissions** — the handlers in `src/app/api/` validate input server-side and return
-   success, but do not yet persist anything or send email. Wire them to your datastore or CRM.
-4. **`NEXT_PUBLIC_SITE_URL`** — set this, or canonical URLs and the sitemap will point at localhost.
-5. **Cookie consent** — no banner is present. Add one if you introduce non-essential cookies.
+1. **Legal review** — `/terms`, `/privacy`, and `/cookies` carry the final copy, but the Terms'
+   governing-law section (26) still needs a specific clause, and the set should be reviewed by a
+   lawyer for the jurisdictions you operate in.
+2. **Email delivery** — set `RESEND_API_KEY` and `EMAIL_FROM` (see Environment above), then submit
+   each form once against production to confirm the mail arrives.
+3. **`NEXT_PUBLIC_SITE_URL`** — set this, or canonical URLs and the sitemap will point at localhost.
+4. **Cookie consent** — no banner is present. Add one if you introduce non-essential cookies.
+5. **Spam protection** — the form endpoints have no rate limiting or bot checks.
 
 ## Content rules this site follows
 
